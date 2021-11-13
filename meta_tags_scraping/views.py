@@ -9,7 +9,10 @@ def index(request):
 def scrape(request):
     try:
         url=request.POST.get("_url")
-        r=requests.get(url)
+        if "http://" in url or "https://" in url:
+            r=requests.get(url)
+        else:
+            r=requests.get(f"https://{url}")
     except:
         return HttpResponse(f"Error : {url} Not Found. ")
     else:
