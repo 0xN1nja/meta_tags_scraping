@@ -1,4 +1,3 @@
-# decorator of schedule
 from django.http import HttpResponse,Http404
 from django.shortcuts import render,redirect
 from bs4 import BeautifulSoup
