@@ -42,10 +42,13 @@ def scrape(request):
         except:
             return 
         # Now Push Content To scraping.html
-    params={
-        "website_url":r.url if r.url else "Invalid URL",
-        "meta_description":meta_description_content if meta_description_content else "Website Does Not Have Any Meta Description Tags",
-        "first_image":first_img_src if first_img_src else "Website Does Not Any Have Image Tags",
-        "website_title":website_title_content if website_title_content else "Website Does Not Have Any Title Tag",
-    }
-    return render(request,"scraping.html",params)
+    try:
+        params={
+            "website_url":r.url if r.url else "Invalid URL",
+            "meta_description":meta_description_content if meta_description_content else "Website Does Not Have Any Meta Description Tags",
+            "first_image":first_img_src if first_img_src else "Website Does Not Any Have Image Tags",
+            "website_title":website_title_content if website_title_content else "Website Does Not Have Any Title Tag",
+        }
+        return render(request,"scraping.html",params)
+    except:
+        return HttpResponse("Error")
